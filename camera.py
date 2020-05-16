@@ -8,11 +8,12 @@ amg = adafruit_amg88xx.AMG88XX(i2c)
 temps = amg.pixels
 
 while True:
-    for temp in temps:
-     if temp > 22.0:
-      person_detected = 1
-     else:
-      person_detected = 0
+    for row in temps:
+     for i in row:
+      if i > 22.0:
+       person_detected = 1
+      else:
+       person_detected = 0
      if person_detected == 1:
       print(["{0:.1f}".format(temp) for temp in row])
     print("")

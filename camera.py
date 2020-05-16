@@ -5,8 +5,9 @@ import adafruit_amg88xx
  
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
- import numpy as np
- import pygame
+
+import numpy as np
+import pygame
 from scipy.interpolate import griddata
  
 from colour import Color

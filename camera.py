@@ -15,7 +15,8 @@ while True:
       else:
        person_detected = 0
      if person_detected == 1:
-      print(["{0:.1f}".format(temp) for temp in row])
+      print "Person detected",i
+     print(["{0:.1f}".format(temp) for temp in row])
     print("")
     print("\n")
     time.sleep(1)

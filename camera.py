@@ -9,7 +9,7 @@ temps = amg.pixels
 
 while True:
     for temp in temps:
-     if temp > 22.0
+     if temp > 22.0:
       person_detected = 1
      else:
       person_detected = 0

@@ -19,14 +19,15 @@ while True:
         for i in row:
             if i > 22.0:
                 person_detected = 1
+                break
             else:
                 person_detected = 0
             
-            if person_detected == 1:
-                print("Person detected",i)
-            else:
-                print("No one detected",i)
+    if person_detected == 1:
+        print("Person detected",i)
+    else:
+        print("No one detected",i)
 
-        print("")
-        print("\n")
-        time.sleep(1)
+    print("")
+    print("\n")
+    time.sleep(1)

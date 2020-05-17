@@ -38,7 +38,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                    time.sleep(.25) #time delay of quarter of a second
                    if pir.value == True:
                         if people_in_store > 0:
-                            people_in_store-- ## if it's not the last person in the store, subtract from count of people in store
+                            people_in_store = people_in_store - 1 ## if it's not the last person in the store, subtract from count of people in store
                
             break
         break
@@ -50,7 +50,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         for row in amg.pixels: #check to see if camera detects person
             for j in row:           #look through temps in a row
                 if j > 22.0:        #detect a human temp (usually > 22 degrees celsius)
-                    people_in_store++ #add to count of people in store
+                    people_in_store = people_in_store + 1 #add to count of people in store
                     
             break
         break

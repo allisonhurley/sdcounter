@@ -26,6 +26,13 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                 break
             break
     
+    for row in amg.pixels:
+        # Pad to 1 decimal place
+        print(["{0:.1f}".format(temp) for temp in row])
+        print("")
+    print("\n")
+    
+    
     print("There are ", people_in_store, " people in the store B.")
     print("")
     print("\n")

@@ -2,11 +2,13 @@ import digitalio
 import time
 import board
 
-pir = digitalio.DigitalInOut(11)
+pir = digitalio.DigitalInOut(board.D11)
 pir.direction = digitalio.Direction.INPUT
+pir.pull = digitalio.Pull.UP
 
+ 
 while True:
-   
+  
     if pir.value==0: #When output from motion sensor is LOW
   
         print ("No intruders",i)

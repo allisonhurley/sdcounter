@@ -1,1 +1,66 @@
-<body>index</body>
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+
+var dataPoints = [];
+
+//Better to construct options first and then pass it as a parameter
+var options = {
+	animationEnabled: true,
+	zoomEnabled: true,
+	colorSet: "colorSet2",
+	title:{
+		text: "Occupancy by Day"
+	},
+	axisX: {
+		title:"Date",      	
+		crosshair: {
+			enabled: true,
+			snapToDataPoint: true
+		}
+	},
+	axisY:{
+		title: "Occpuancy",
+		includeZero: false,
+		gridThickness: 0,
+		crosshair: {
+			enabled: true,
+			snapToDataPoint: true
+		}
+	},
+  data: [{
+		type: "scatter",
+		yValueFormatString: "### Count",
+		toolTipContent: "<b>Headcount: </b>{y}<br/><b>At: </b>{x}",
+		dataPoints: dataPoints
+	}]
+};
+
+var chart = new CanvasJS.Chart("chartContainer", options);
+// $("#chartContainer").CanvasJSChart(options);
+
+function addData(data) {
+	for (var i = 0; i < data.length; i++) {
+		dataPoints.push({
+			x: new Date(data[i].applied_at),
+			y: data[i].count
+		});
+	}
+	chart.render();
+}
+
+$.getJSON("/api/journal/1", addData);
+
+
+}
+</script>
+</head>
+<body>
+	<p>Please find the <a href='/api'>api here</a>/</p>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>

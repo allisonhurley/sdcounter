@@ -9,6 +9,9 @@ import adafruit_amg88xx
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
 
+temp_count = 0
+people_in_store = 0
+
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
     
     for row in amg.pixels: #check to see if camera detects person

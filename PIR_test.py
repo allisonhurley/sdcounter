@@ -1,21 +1,19 @@
-import RPi.GPIO as GPIO
+import digitalio
 import time
+import board
 
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.IN)
+pir = digitalio.DigitalInOut(D11)
+pir.direction = digitalio.Direction.INPUT
 
 while True:
-
-    i=GPIO.input(11)
-
-    if i==0: #When output from motion sensor is LOW
-
+   
+    if pir.value==0: #When output from motion sensor is LOW
+  
         print ("No intruders",i)
 
         time.sleep(0.1)
 
-    elif i==1: #When output from motion sensor is HIGH
+    elif pir.value==1: #When output from motion sensor is HIGH
 
         print ("Intruder detected",i)
 

@@ -50,4 +50,4 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
     print("There are ", people_in_store, " people in the store C.")
     print("")
     print("\n")
-    time.sleep(.5) # 1/2 second delay 
+    

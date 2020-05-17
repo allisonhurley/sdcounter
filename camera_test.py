@@ -16,7 +16,7 @@ count_flag = 0
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
    
-      for row in amg.pixels
+      for row in amg.pixels:
 
       # count numbers in the row greater than 25
           count = sum(map(lambda x : x>25, row)) 

@@ -16,7 +16,7 @@ count_flag = 0
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
    
-    while(temp_count != 0) #break out of loop when temp_count = 0
+    while temp_count != 0: #break out of loop when temp_count = 0
         for row in amg.pixels: #check to see if camera detects person
             for j in row:           #look through temps in a row
 

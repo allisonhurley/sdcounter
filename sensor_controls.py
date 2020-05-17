@@ -25,7 +25,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                     if pir.value == True:
                         if people_in_store > 0:
                             people_in_store = people_in_store - 1 ## if it's not the last person in the store, subtract from count of people in store
-
+                    print("There are ", people_in_store, " people in the store A.")
                 break
             #break
 
@@ -37,11 +37,12 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             for j in row:           #look through temps in a row
                 if j > 22.0:        #detect a human temp (usually > 22 degrees celsius)
                     people_in_store = people_in_store + 1 #add to count of people in store
-
+                
+                print("There are ", people_in_store, " people in the store B.")
                 break
         #break
 
     print("There are ", people_in_store, " people in the store.")
     print("")
     print("\n")
-    time.sleep(2) # 2 second delay 
+    time.sleep(.5) # 1/2 second delay 

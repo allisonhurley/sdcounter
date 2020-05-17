@@ -1,22 +1,23 @@
-import RPi.GPIO as GPIO
+import digitalio
 import time
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
+import board
 
-pir_sensor = 17 #GPIO pin 17
 
-GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
+pir = digitalio.DigitalInOut(board.D17)
+pir.direction = digitalio.Direction.INPUT
+pir.pull = digitalio.Pull.UP
 
-current_state = 0
-
+ 
 while True:
-    try:
-        time.sleep(0.1)
-        current_state = GPIO.input(pir_sensor)
-        if current_state == 1:
-          print("GPIO pin %s is %s" % (pir_sensor, current_state)) # motion detected
+  
+    if pir.value: #When output from motion sensor is HIGH
 
-          time.sleep(4) # wait 4 seconds for PIR to reset. 
-    except KeyboardInterrupt:
-        GPIO.cleanup()
+        print ("Intruder detected",pir.value)
+
+        time.sleep(0.1)
         
+    else: #When output from motion sensor is LOW
+
+        print ("No intruders",pir.value)
+
+        time.sleep(0.1)

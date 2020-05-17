@@ -34,10 +34,11 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             for j in row:           #look through temps in a row
                 if j > 22.0:        #detect a human temp (usually > 22 degrees celsius)
                     person_detected = 1
+                    print("Person entering",j)
                     break
             break
-        if person_detected == 1:
-            print("Person entering",j)
+        
+            
     
     print("")
     print("\n")

@@ -2,6 +2,7 @@ import digitalio
 import time
 import board
 
+
 pir = digitalio.DigitalInOut(board.D11)
 pir.direction = digitalio.Direction.INPUT
 pir.pull = digitalio.Pull.UP

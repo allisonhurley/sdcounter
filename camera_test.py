@@ -19,7 +19,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
    new_list = sum(amg.pixels, [])
    count = sum(map(lambda x : x> 23, new_list)
    
-   while (count!=0):
+   while count!=0:
         count = sum(map(lambda x: x>23, new_list)
             if ((count >= 2) and (count_flag == 0)):
                 people_in_store = people_in_store + 1

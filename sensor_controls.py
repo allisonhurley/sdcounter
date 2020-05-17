@@ -27,7 +27,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                             people_in_store = people_in_store - 1 ## if it's not the last person in the store, subtract from count of people in store
 
                 break
-            break
+            #break
 
     elif pir.value == True:               #When output from motion sensor is HIGH
 
@@ -39,7 +39,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                     people_in_store = people_in_store + 1 #add to count of people in store
 
                 break
-        break
+        #break
 
     print("There are ", people_in_store, " people in the store.")
     print("")

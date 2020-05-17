@@ -11,7 +11,7 @@ pir = digitalio.DigitalInOut(board.D17)
 pir.direction = digitalio.Direction.INPUT
 pir.pull = digitalio.Pull.UP
 
- while True:
+while True:
   
     if pir.value: #When output from motion sensor is HIGH
 

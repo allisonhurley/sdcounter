@@ -15,7 +15,7 @@ people_in_store = 0
 temp_count = 0
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
-
+    
     for row in amg.pixels: #check to see if camera detects person
         for j in row:           #look through temps in a row
             if j > 22.0:        #detect a human temp (usually > 22 degrees celsius)
@@ -26,10 +26,11 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                     if people_in_store > 0:
                         people_in_store = people_in_store - 1 ## if it's not the last person in the store, subtract from count of people in store
                 print("There are ", people_in_store, " people in the store A.")
+                temp_count = 0 #reset temp count
             break
         #break
 
-   if pir.value == True:               #When output from motion sensor is HIGH
+    while pir.value == True:               #When output from motion sensor is HIGH
 
         time.sleep(.1)     #time delay
 
@@ -41,6 +42,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                     
                     if temp_count >= 2:
                         print("There are ", people_in_store, " people in the store B.")
+                        temp_count = 0 #reset temp count
                 break
         #break
 

@@ -11,12 +11,14 @@ amg = adafruit_amg88xx.AMG88XX(i2c)
 
 temp_count = 0
 people_in_store = 0
+row = 0
+col = 0
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
     
     for row in amg.pixels: #check to see if camera detects person
         for j in row:           #look through temps in a row
-            if j > 22.0:        #detect a human temp (usually > 22 degrees celsius)
+            if j > 25.0:        #detect a human temp (usually > 22 degrees celsius)
                 temp_count = temp_count + 1
                 time.sleep(.1) #time delay
                 
@@ -32,6 +34,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         print("")
     print("\n")
     
+    print(amg.pixels[1][2])
     
     print("There are ", people_in_store, " people in the store B.")
     print("")

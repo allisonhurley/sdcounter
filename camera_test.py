@@ -16,17 +16,17 @@ count_flag = 0
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
    
-    while temp_count != 0: #break out of loop when temp_count = 0
+      for row in amg.pixels
 
-
-   # count numbers in the list which are greater than 25
-       temp_count = sum(map(lambda x : x>25, amg.pixels))
-
-       if ((temp_count >= 2) and (count_flag == 0)):
-           people_in_store = people_in_store + 1
-           temp_count = 0 #reset temp count
-           count_flag = 1 #set count flag so people not counted more than once
-                    
+      # count numbers in the row greater than 25
+          count = sum(map(lambda x : x>25, row)) 
+          temp_count = temp_count + count #count all numbers greater than 25 in whole array
+            
+          if ((temp_count >= 4) and (count_flag == 0)):
+              people_in_store = people_in_store + 1
+              count_flag = 1 #set count flag so people not counted more than once
+                 
+       time.sleep(1) # 1 s time delay until next scan
               
         
     for row in amg.pixels:
@@ -37,7 +37,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
     
     
     count_flag = 0 #reset count flag
-    temp_count = 1 #reset condition for temp count
+
     print("There are ", people_in_store, " people in the store B.")
     print("")
     print("\n")

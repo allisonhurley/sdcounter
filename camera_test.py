@@ -9,7 +9,7 @@ import adafruit_amg88xx
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
 
-temp_count = 1
+temp_count = 0
 people_in_store = 0
 count_flag = 0
 
@@ -37,7 +37,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
 
 
    count_flag = 0 #reset count flag
-
+   temp_count = 0 #reset temp count
    print("There are ", people_in_store, " people in the store B.")
    print("")
    print("\n")

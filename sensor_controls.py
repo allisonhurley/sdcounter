@@ -23,6 +23,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                    print("person leaving",j)
                    break
             break
+        break
 
     elif i==1:               #When output from motion sensor is HIGH
         print("Intruder alert",i)
@@ -36,9 +37,10 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                     print("Person entering",j)
                     break
             break
+        break
         
             
     
     print("")
     print("\n")
- 
+    time.sleep(1) # 1 second delay I think?

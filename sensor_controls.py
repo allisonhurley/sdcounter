@@ -9,7 +9,6 @@ amg = adafruit_amg88xx.AMG88XX(i2c)
 import RPi.GPIO as GPIO
 
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.IN)         #Read output from PIR motion sensor
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving

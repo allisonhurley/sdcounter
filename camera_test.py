@@ -22,8 +22,9 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                 
             if temp_count >= 2:
                 people_in_store = people_in_store + 1
-
                 temp_count = 0 #reset temp count
+                break
+            break
     
     print("There are ", people_in_store, " people in the store B.")
     print("")

@@ -2,7 +2,7 @@ import digitalio
 import time
 import board
 
-pir = digitalio.DigitalInOut(D11)
+pir = digitalio.DigitalInOut(11)
 pir.direction = digitalio.Direction.INPUT
 
 while True:

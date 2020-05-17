@@ -22,7 +22,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                 temp_count = temp_count + 1
                 time.sleep(.1) #time delay 
                 
-                if (pir.value == True) AND (temp_count >= 2):
+                if (pir.value == True AND temp_count >= 2):
                     if people_in_store > 0:
                         people_in_store = people_in_store - 1 ## if it's not the last person in the store, subtract from count of people in store
                 print("There are ", people_in_store, " people in the store A.")

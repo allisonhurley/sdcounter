@@ -21,8 +21,8 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                 if j > 22.0:        #detect a human temp (usually > 22 degrees celsius)
                    person_detected = 1
                    time.sleep(.25)
-                    print("person leaving",j)
-                    break
+                   print("person leaving",j)
+                   break
             break
 
     elif i==1:               #When output from motion sensor is HIGH

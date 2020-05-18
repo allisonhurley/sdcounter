@@ -1,27 +1,23 @@
-#!/usr/bin/env python2.7  
-# script by Alex Eames https://raspi.tv  
-# https://raspi.tv/how-to-use-interrupts-with-python-on-the-raspberry-pi-and-rpi-gpio-part-3  
-import RPi.GPIO as GPIO  
-GPIO.setmode(GPIO.BCM)  
-  
-# GPIO 23 & 17 set up as inputs, pulled up to avoid false detection.  
-# Both ports are wired to connect to GND on button press.  
-# So we'll be setting up falling edge detection for both  
+import RPi.GPIO as GPIO
+import time
 
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)  
-  
+GPIO.setmode(GPIO.BCM)
+PIR_PIN = 17
+GPIO.setup(PIR_PIN, GPIO.IN)
 
-  
-# now we'll define two threaded callback functions  
-# these will run in another thread when our events are detected  
-def my_callback(channel):  
-    print ("falling edge detected on 17")  
-    
-while True:
-  
-# when a falling edge is detected on port 17, regardless of whatever   
-# else is happening in the program, the function my_callback will be run  
-    GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback, bouncetime=300)  
+def MOTION(PIR_PIN):
+               print “Motion Detected!”
 
+print “PIR Module Test (CTRL+C to exit)”
+time.sleep(2)
+print “Ready”
+
+try:
+               GPIO.add_event_detect(PIR_PIN, GPIO.RISING, callback=MOTION)
+               while 1:
+                              time.sleep(100)
+except KeyboardInterrupt:
+               print “ Quit”
+               GPIO.cleanup()
 
 

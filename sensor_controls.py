@@ -22,8 +22,10 @@ people_in_store = 0 #initialize flags to 0
 temp_count = 0
 motion_detected = 0
 
+GPIO.add_event_detect(PIR_PIN, GPIO.RISING, callback=MOTION)
+
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
-    GPIO.add_event_detect(PIR_PIN, GPIO.RISING, callback=MOTION)
+
 
     new_list = sum(amg.pixels, [])
     count = sum(map(lambda x : x> 23, new_list))

@@ -11,7 +11,7 @@ pir.pull = digitalio.Pull.UP
 while True:
     prev_pir_val = pir.value
   
-    if pir.value > prev_pir_val: #When output from motion sensor is HIGH
+    if pir.value == True and prev_pir_val == False: #When output from motion sensor is HIGH
 
         print ("Intruder detected",pir.value)
 
@@ -19,6 +19,6 @@ while True:
         
     else: #When output from motion sensor is LOW
 
-        print ("No intruders",pir.value)
+        
 
         time.sleep(0.1)

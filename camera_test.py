@@ -18,8 +18,14 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
    
    new_list = sum(amg.pixels, [])
    count = sum(map(lambda x : x> 23, new_list)
-   print(new_list)
-   print(amg.pixels)
+   if len(new_list.shape) == 1:
+      print('1-D array new_list')
+   if len(new_list.shape) == 2:
+      print('2-D array new_list')
+   if len(amg.pixels.shape) == 1:
+      print('1-D array')
+   if len(amg.pixels.shape) == 2:
+      print('2-D array')               
    print("")
    print("\n")               
    time.sleep(1)

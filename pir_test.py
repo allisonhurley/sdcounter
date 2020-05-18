@@ -1,27 +1,15 @@
-import board
-import digitalio
-import gamepad
+import RPi.GPIO as GPIO
 import time
 
-B_UP = 1 << 0
-B_DOWN = 1 << 1
+GPIO.setmode(GPIO.BCM)
+PIR_PIN = 17
+GPIO.setup(PIR_PIN, GPIO.IN)
 
+def MOTION(PIR_PIN):
+     print("Motion Detected")
 
-pir = gamepad.GamePad(
-    digitalio.DigitalInOut(board.D17))
+print("PIR Module Test (CTRL+C to exit)")
+time.sleep(2)
+print("Ready")
 
-y = 0
-while True:
-    buttons = pir.get_pressed()
-    if buttons & B_UP:
-        y -= 1
-        print(y)
-    elif buttons & B_DOWN:
-        y += 1
-        print(y)
-    time.sleep(0.1)
-    while buttons:
-        # Wait for all buttons to be released.
-        buttons = pir.get_pressed()
-        time.sleep(0.1)
 

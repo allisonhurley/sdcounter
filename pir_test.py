@@ -17,7 +17,7 @@ GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 def my_callback(channel):  
     print ("falling edge detected on 17")  
     
-While True:
+while True:
   
 # when a falling edge is detected on port 17, regardless of whatever   
 # else is happening in the program, the function my_callback will be run  

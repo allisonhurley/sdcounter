@@ -26,11 +26,10 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             person_detected = 1 #detected person in front of camera flag set 
             count_flag = 1 #set count flag so people not counted more than once
                     
-        if (pir.value == True and person_detected == 1):
-            if people_in_store > 0:
-                people_in_store = people_in_store - 1 ## if it's not the last person in the store, subtract from count of people in store
-        print("There are ", people_in_store, " people in the store A.")
-    
+    if (pir.value == True and person_detected == 1):
+        if people_in_store > 0:
+            people_in_store = people_in_store - 1 ## if it's not the last person in the store, subtract from count of people in store
+ 
     count_flag = 0 #reset flags 
     person_detected = 0
     
@@ -49,7 +48,8 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                 count_flag = 1 #set count flag so people not counted more than once
        break # break out of pir loop             
                 
-
+    count_flag = 0 #reset flags
+    person_detected = 0 
     print("There are ", people_in_store, " people in the store.")
     print("")
     print("\n")

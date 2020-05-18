@@ -1,24 +1,20 @@
-import RPi.GPIO as GPIO  
-GPIO.setmode(GPIO.BCM)  
-  
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)  
+import time
+import digitalio
+import board
+import busio
 
-# now we'll define two threaded callback functions  
-# these will run in another thread when our events are detected  
-def my_callback(channel):  
-    print ("rising edge detected on 17")  
-  
+pir = digitalio.DigitalInOut(board.D17)
+pir.direction = digitalio.Direction.INPUT
+pir.pull = digitalio.Pull.UP
+ 
+
+while true:
     
-# when a falling edge is detected on port 17, regardless of whatever   
-# else is happening in the program, the function my_callback will be run  
-GPIO.add_event_detect(17, GPIO.RISING, callback=my_callback, bouncetime=300)  
-  
-  
-try:  
-    print ("Waiting for rising edge on port 17")  
-    GPIO.wait_for_edge(17, GPIO.RISING)  
-    print ("Rising edge detected on port 17. Here endeth the third lesson.")
-  
-except KeyboardInterrupt:  
-    GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
-GPIO.cleanup()           # clean up GPIO on normal exit  
+    if event.edge == pir.EDGE_FALLING:
+        print("intruder detected")
+        time.sleep(0.1)
+        
+    elif event.edge == pir.EDGE_RISING:
+        print("NONE")
+        time.sleep(0.1)
+ 

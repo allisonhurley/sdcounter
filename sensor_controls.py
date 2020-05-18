@@ -48,8 +48,8 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             
             if ((count >= 2) and (count_flag == 0)):
                 people_in_store = people_in_store + 1 
-                count_flag = 1 #set count flag so people not counted more than once
-       break # break out of pir loop             
+                count_flag = 1 #set count flag so people not counted more than onc
+                       
                 
     count_flag = 0 #reset flags
     person_detected = 0 

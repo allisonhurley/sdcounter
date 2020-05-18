@@ -8,7 +8,7 @@ pir.direction = digitalio.Direction.INPUT
 pir.pull = digitalio.Pull.UP
  
 
-while true:
+while True:
     
     if event.edge == pir.EDGE_FALLING:
         print("intruder detected")

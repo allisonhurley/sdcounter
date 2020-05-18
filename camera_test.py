@@ -16,8 +16,13 @@ count_flag = 0
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
    
-   #new_list = sum(amg.pixels, [])
-   #count = sum(map(lambda x : x> 23, new_list)
+   new_list = sum(amg.pixels, [])
+   count = sum(map(lambda x : x> 23, new_list)
+   print(new_list)
+   print(amg.pixels)
+   print("")
+   print("\n")               
+   time.sleep(1)
    
    #while count > 0:
         #new_list = sum(amg.pixels, [])
@@ -26,14 +31,14 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
              #   people_in_store = people_in_store + 1
                # count_flag = 1 #set count flag so people not counted more than once
      
-   for row in amg.pixels:
+   #for row in amg.pixels:
       # Pad to 1 decimal place
-      print(["{0:.1f}".format(temp) for temp in row])
-      print("")
-   print("\n")
+      #print(["{0:.1f}".format(temp) for temp in row])
+      #print("")
+   #print("\n")
 
 
-   count_flag = 0 #reset count flag
-   print("There are ", people_in_store, " people in the store B.")
-   print("")
-   print("\n")
+   #count_flag = 0 #reset count flag
+   #print("There are ", people_in_store, " people in the store B.")
+   #print("")
+   #print("\n")

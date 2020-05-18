@@ -23,12 +23,7 @@ temp_count = 0
 motion_detected = 0
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
-    try:
-       GPIO.add_event_detect(PIR_PIN, GPIO.RISING, callback=MOTION)
-
-    except KeyboardInterrupt:
-        print("Quit")
-        GPIO.cleanup()
+    GPIO.add_event_detect(PIR_PIN, GPIO.RISING, callback=MOTION)
 
     new_list = sum(amg.pixels, [])
     count = sum(map(lambda x : x> 23, new_list))

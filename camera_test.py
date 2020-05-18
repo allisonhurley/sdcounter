@@ -17,7 +17,7 @@ count_flag = 0
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
    
    new_list = sum(amg.pixels, [])
-   count = sum(map(lambda x : x> 23, new_list)
+   count = sum(map(lambda x : x> 23, new_list))
    if len(new_list.shape) == 1:
       print('1-D array new_list')
    if len(new_list.shape) == 2:

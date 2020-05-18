@@ -24,7 +24,7 @@ GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback, bouncetime=300)
 
   
 try:  
-    print "Waiting for rising edge on port 17"  
+    print ("Waiting for rising edge on port 17")  
     GPIO.wait_for_edge(17, GPIO.FALLING)  
     print ("Rising edge detected on port 17. Here endeth the third lesson.")  
   

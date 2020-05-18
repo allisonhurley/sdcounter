@@ -23,6 +23,4 @@ def my_callback(channel):
 GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback, bouncetime=300)  
 
 
-except KeyboardInterrupt:  
-    GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
-GPIO.cleanup()           # clean up GPIO on normal exit  
+

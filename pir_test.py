@@ -15,7 +15,7 @@ GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # now we'll define two threaded callback functions  
 # these will run in another thread when our events are detected  
 def my_callback(channel):  
-    print "falling edge detected on 17"  
+    print ("falling edge detected on 17")  
   
   
 # when a falling edge is detected on port 17, regardless of whatever   
@@ -26,7 +26,7 @@ GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback, bouncetime=300)
 try:  
     print "Waiting for rising edge on port 17"  
     GPIO.wait_for_edge(17, GPIO.FALLING)  
-    print "Rising edge detected on port 17. Here endeth the third lesson."  
+    print ("Rising edge detected on port 17. Here endeth the third lesson.")  
   
 except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit  

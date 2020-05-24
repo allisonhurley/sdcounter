@@ -10,23 +10,36 @@ GPIO.setup(PIR_PIN2, GPIO.IN)
 
 def MOTION1(PIR_PIN1):
     if GPIO.input(17):     # if port 17 == 1  
-        rising_time = datetime.now()
-        print("Rising edge detected on 17 ",rising_time)  
+        pir1_rising = datetime.now()
+        print("Rising edge detected on 17 ",pir1_rising)  
     else:                  # if port 17 != 1  
-        falling_time = datetime.now()
-        print("Falling edge detected on 17 ", falling_time) 
+        pir1_falling = datetime.now()
+        print("Falling edge detected on 17 ", pir1_falling) 
 def MOTION2(PIR_PIN2):
     if GPIO.input(27):     # if port 17 == 1  
-        rising_time = datetime.now()
-        print("Rising edge detected on 27 ",rising_time)  
+        pir2_rising = datetime.now()
+        pir1_flag = 1
+        print("Rising edge detected on 27 ",pir2_rising)  
     else:                  # if port 17 != 1  
-        falling_time = datetime.now()
-        print("Falling edge detected on 27 ", falling_time) 
+        pir1_falling = datetime.now()
+        pir2_flag = 1
+        print("Falling edge detected on 27 ", pir1_falling) 
+
+#set flags
+pir1_flag = 0
+pir2_flag = 0
 try:
     GPIO.add_event_detect(PIR_PIN1, GPIO.BOTH, callback=MOTION1)
     GPIO.add_event_detect(PIR_PIN2, GPIO.BOTH, callback=MOTION2)
     while 1:
-        time.sleep(100)
+        if (pir1_flag == 1) and (pir2_flag == 0):
+            people_in_store += 1
+        elif (pir1_flag == 0) and (pir2_flag == 1):
+            people_in_store -= 1
+        
+        #reset flags
+        pir1_flag = 0
+        pir2_flag = 0
         
 except KeyboardInterrupt:
     print("Quit")

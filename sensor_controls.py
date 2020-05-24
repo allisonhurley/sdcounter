@@ -36,6 +36,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             while count > 0: #while the camera detects a person's temperatures
                 new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate
                 count = sum(map(lambda x: x>23, new_list)) #get number of temps in list greater than 23 degrees
+                print("You are stuck here")
            
                 if ((count > 0) and (count_flag == 0)): # if any number of temps > 23 FOR NOW COME BACK AND FIX?
                     camera_time = datetime.now()

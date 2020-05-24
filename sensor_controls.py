@@ -25,12 +25,12 @@ def MOTION(PIR_PIN):
         print("Falling edge detected on 17 ", falling_time) 
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
-        new_list = sum(amg.pixels, [])   #converts 2D array to list and counts number of temps > 23 in list
-        count = sum(map(lambda x : x> 23, new_list))    
-   
+    new_list = sum(amg.pixels, [])   #converts 2D array to list and counts number of temps > 23 in list
+    count = sum(map(lambda x : x> 23, new_list))    
+
     try:
         GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
-        
+
         new_list = sum(amg.pixels, [])   #converts 2D array to list and counts number of temps > 23 in list
         count = sum(map(lambda x : x> 23, new_list))
 
@@ -44,13 +44,13 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                 count_flag = 1 #set count flag so people not counted more than once
 
             if camera_time > PIR_rising:
-                    people_in_store += 1
+                people_in_store += 1
             elif (camera_time < PIR_rising) and (people_in_store > 0):
-                    people_in_store -= 1
-    
+                people_in_store -= 1
+
     except KeyboardInterrupt:
-            print("Quit")
-            GPIO.cleanup()
+        print("Quit")
+        GPIO.cleanup()
 
     print("There are ", people_in_store, " people in the store.")
     print("")

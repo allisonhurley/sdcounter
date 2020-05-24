@@ -30,10 +30,10 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         if GPIO.input(17):     # if port 17 == 1  
             pir_rising = datetime.now()
             test_flag1 = 1
-            print("Rising edge detected on 17 ",PIR_rising)  
+            print("Rising edge detected on 17 ",pir_rising)  
         else:                  # if port 17 != 1  
             pir_falling = datetime.now()
-            print("Falling edge detected on 17 ",PIR_falling) 
+            print("Falling edge detected on 17 ",pir_falling) 
       
     new_list = sum(amg.pixels, [])   #converts 2D array to list and counts number of temps > 23 in list
     count = sum(map(lambda x : x> 23, new_list))

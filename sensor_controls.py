@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+import numpy as np
 import busio
 import digitalio
 import board

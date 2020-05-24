@@ -3,46 +3,30 @@ import time
 from datetime import datetime
 
 GPIO.setmode(GPIO.BCM)
-pir1 = 17
-pir2 = 27
-GPIO.setup(pir1, GPIO.IN)
-GPIO.setup(pir2, GPIO.IN)
+PIR_PIN1 = 17
+PIR_PIN2 = 27
+GPIO.setup(PIR_PIN1, GPIO.IN)
+GPIO.setup(PIR_PIN2, GPIO.IN)
 
-def PIR1MOTION(pir1):  
-    pir1_time = datetime.now()
-    pir1_flag = 1
-    print("pir1 time ", pir1_time)
-
-def PIR2MOTION(pir2):
-    pir2_time = datetime.now()
-    pir2_flag = 1
-    print("pir2 time ", pir2_time)
-    
-GPIO.add_event_detect(pir1, GPIO.RISING, callback=PIR1MOTION)
-GPIO.add_event_detect(pir2, GPIO.RISING, callback=PIR2MOTION)
-
-#initialize time values to be equal
-pir1_time = datetime.now()
-pir2_time = pir1_time
-people_in_store = 10
-pir1_flag = 0
-pir2_flag = 0
-
-while True:
-    
-    if (pir1_flag == 1) and (pir2_flag == 1):
-        if pir1_time > pir2_time:
-            if people_in_store > 0:
-                people_in_store -= 1
-        elif pir1_time < pir2_time:
-            people_in_store += 1
-        else:
-            people_in_store = people_in_store
-
-        pir1_flag = 0
-        pir2_flag = 0
-    
-    print("There are ", people_in_store, "people in the store")
-    print("")
-    print("\n")
-   
+def MOTION(PIR_PIN1):
+    if GPIO.input(17):     # if port 17 == 1  
+        rising_time = datetime.now()
+        print("Rising edge detected on 17 ",rising_time)  
+    else:                  # if port 17 != 1  
+        falling_time = datetime.now()
+        print("Falling edge detected on 17 ", falling_time) 
+def MOTION(PIR_PIN1):
+    if GPIO.input(17):     # if port 17 == 1  
+        rising_time = datetime.now()
+        print("Rising edge detected on 17 ",rising_time)  
+    else:                  # if port 17 != 1  
+        falling_time = datetime.now()
+        print("Falling edge detected on 17 ", falling_time) 
+try:
+    GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
+    while 1:
+        time.sleep(100)
+        
+except KeyboardInterrupt:
+    print("Quit")
+    GPIO.cleanup() 

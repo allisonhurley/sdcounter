@@ -10,4 +10,5 @@ GPIO.add_event_detect(PIR_PIN, GPIO.FALLING)
 while True:
     if GPIO.event_detected(PIR_PIN): 
         print("Motion detected")    
-
+        
+    time.sleep(1)

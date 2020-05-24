@@ -6,16 +6,20 @@ GPIO.setmode(GPIO.BCM)
 PIR_PIN = 17
 GPIO.setup(PIR_PIN, GPIO.IN)
 
-GPIO.add_event_detect(PIR_PIN, GPIO.RISING)
+GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
+motion_detected = 0
+
+def MOTION(PIR_PIN):
+    if GPIO.input(17):     # if port 17 == 1  
+        PIR_rising = datetime.now()
+        print("Rising edge detected on 17 ",PIR_rising)  
+    else:                  # if port 17 != 1  
+        PIR_falling = datetime.now()
+        print("Falling edge detected on 17 ",PIR_falling) 
+
+
 motion_detected = 0
 
 while True:
     
-    try:
-        if GPIO.event_detected(PIR_PIN):
-            motion_detected += 1 
-            print("Motion detected: ",motion_detected)
-    except:
-        GPIO.cleanup()
-        
-    time.sleep(1)
+    time.sleep(.1)

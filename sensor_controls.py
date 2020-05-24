@@ -64,15 +64,13 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         count = sum(map(lambda x: x>23, new_list)) #get number of temps in list greater than 23 degrees
 
     if (GPIO.event_detected(PIR_PIN) and person_detected==1):                
-    if people_in_store > 0:
-        people_in_store -= 1 ## if it's not the last person in the store, subtract from count of people in store
+        if people_in_store > 0:
+            people_in_store -= 1 ## if it's not the last person in the store, subtract from count of people in store
    
     count_flag = 0 #reset flags 
     person_detected = 0
 
-                
-
-
+     
     print("There are ", people_in_store, " people in the store.")
     print("")
     print("\n")

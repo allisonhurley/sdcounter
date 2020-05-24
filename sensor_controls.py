@@ -23,13 +23,12 @@ def MOTION(PIR_PIN):
     else:                  # if port 17 != 1  
         PIR_falling = datetime.now()
         print("Falling edge detected on 17 ", falling_time) 
+        
+GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
-    new_list = sum(amg.pixels, [])   #converts 2D array to list and counts number of temps > 23 in list
-    count = sum(map(lambda x : x> 23, new_list))    
 
     try:
-        GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
 
         new_list = sum(amg.pixels, [])   #converts 2D array to list and counts number of temps > 23 in list
         count = sum(map(lambda x : x> 23, new_list))

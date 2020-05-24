@@ -20,10 +20,10 @@ count_flag = 0
 def MOTION(PIR_PIN):
     if GPIO.input(17):     # if port 17 == 1  
         PIR_rising = datetime.now()
-        print("Rising edge detected on 17 ",rising_time)  
+        print("Rising edge detected on 17 ",PIR_rising)  
     else:                  # if port 17 != 1  
         PIR_falling = datetime.now()
-        print("Falling edge detected on 17 ", falling_time) 
+        print("Falling edge detected on 17 ",PIR_falling) 
         
 GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
 
@@ -35,8 +35,6 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         count = sum(map(lambda x : x> 23, new_list))
 
         while count > 0: #while the camera detects a person's temperatures
-            new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate
-            count = sum(map(lambda x: x>23, new_list)) #get number of temps in list greater than 23 degrees
 
             if ((count > 0) and (count_flag == 0)): # if any number of temps > 23 FOR NOW COME BACK AND FIX?
                 camera_time = datetime.now()
@@ -47,8 +45,11 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                 people_in_store += 1
             elif (camera_time < PIR_rising) and (people_in_store > 0):
                 people_in_store -= 1
-
-    except:
+            
+            new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate
+            count = sum(map(lambda x: x>23, new_list)) #get number of temps in list greater than 23 degrees
+    
+    finally:
         count = 0
         GPIO.cleanup()
 

@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 PIR_PIN = 17
 GPIO.setup(PIR_PIN, GPIO.IN)
 
-GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
+GPIO.add_event_detect(PIR_PIN, GPIO.RISING)
 motion_detected = 0
 
 while True:

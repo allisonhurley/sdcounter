@@ -43,3 +43,4 @@ while True:
     print("There are ", people_in_store, "in the store")
     print("")
     print("\n")
+    time.sleep(1)

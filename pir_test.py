@@ -16,12 +16,12 @@ def MOTION1(PIR_PIN1):
         falling_time = datetime.now()
         print("Falling edge detected on 17 ", falling_time) 
 def MOTION2(PIR_PIN2):
-    if GPIO.input(17):     # if port 17 == 1  
+    if GPIO.input(27):     # if port 17 == 1  
         rising_time = datetime.now()
-        print("Rising edge detected on 17 ",rising_time)  
+        print("Rising edge detected on 27 ",rising_time)  
     else:                  # if port 17 != 1  
         falling_time = datetime.now()
-        print("Falling edge detected on 17 ", falling_time) 
+        print("Falling edge detected on 27 ", falling_time) 
 try:
     GPIO.add_event_detect(PIR_PIN1, GPIO.BOTH, callback=MOTION1)
     GPIO.add_event_detect(PIR_PIN2, GPIO.BOTH, callback=MOTION2)

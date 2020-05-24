@@ -48,8 +48,8 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             elif (camera_time < PIR_rising) and (people_in_store > 0):
                 people_in_store -= 1
 
-    except KeyboardInterrupt:
-        print("Quit")
+    except:
+        count = 0
         GPIO.cleanup()
 
     print("There are ", people_in_store, " people in the store.")

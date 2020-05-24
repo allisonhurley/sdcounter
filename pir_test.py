@@ -35,7 +35,8 @@ try:
         if (pir1_flag == 1) and (pir2_flag == 0):
             people_in_store += 1
         elif (pir1_flag == 0) and (pir2_flag == 1):
-            people_in_store -= 1
+            if people_in_store > 0:
+                people_in_store -= 1
         
         #reset flags
         pir1_flag = 0

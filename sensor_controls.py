@@ -35,7 +35,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             person_detected = 1 #detected person in front of camera flag set 
             count_flag = 1 #set count flag so people not counted more than once
         
-        if (GPIO.event_detected(channel) and person_detected==1):                
+        if (GPIO.event_detected(PIR_PIN) and person_detected==1):                
             if people_in_store > 0:
                 people_in_store = people_in_store - 1 ## if it's not the last person in the store, subtract from count of people in store
 
@@ -45,7 +45,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
 
     time.sleep(0.3) #small time delay
 
-    if GPIO.event_detected(channel):          #When output from motion sensor is HIGH first NOT SURE IF IT SHOULD BE A WHILE OR IF???
+    if GPIO.event_detected(PIR_PIN):          #When output from motion sensor is HIGH first NOT SURE IF IT SHOULD BE A WHILE OR IF???
         new_list = sum(amg.pixels, [])
         count = sum(map(lambda x : x> 23, new_list))
 

@@ -39,10 +39,15 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
                 camera_time = datetime.now()
                 print("camera time ", camera_time)
                 count_flag = 1 #set count flag so people not counted more than once
-   
+        
+        if camera_time > PIR_rising:
+                people_in_store += 1
+        elif (camera_time < PIR_rising) and (people_in_store > 0):
+                people_in_store -= 1
+    
     except KeyboardInterrupt:
-        print("Quit")
-        GPIO.cleanup()
+            print("Quit")
+            GPIO.cleanup()
 
     if camera_time > PIR_rising:
         people_in_store += 1

@@ -18,16 +18,13 @@ count = 0
 count_flag = 0 
 pir_motion = 0
 
-def MOTION(PIR_PIN):
-    if GPIO.input(17):     # if port 17 == 1  rising edge
-        pir_motion = 1
         
-GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
+GPIO.add_event_detect(PIR_PIN, GPIO.RISING)
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving
 
     try:
-        if pir_motion:
+        if GPIO.event_detected(PIR_PIN):
             pir_rising = datetime.now()
             print("PIR rising time ",pir_rising)
         
@@ -52,7 +49,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             
 
     
-    finally:
+    except:
         count = 0
         GPIO.cleanup()
 

@@ -1,5 +1,5 @@
 import time
-import datetime as datetime
+from datetime import datetime
 import busio
 import digitalio
 import board

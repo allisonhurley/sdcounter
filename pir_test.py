@@ -28,8 +28,6 @@ pir1_flag = 0
 pir2_flag = 0
 
 while True:
-    print("pir1 time ", pir1_time)
-    print("pir2 time ", pir2_time)
     
     if (pir1_flag == 1) and (pir2_flag == 1):
         if pir1_time > pir2_time:
@@ -40,11 +38,10 @@ while True:
         else:
             people_in_store = people_in_store
 
-        pir1_time = pir_2_time #reset flags to be equal until next rising edge
         pir1_flag = 0
         pir2_flag = 0
     
-    print("There are ", people_in_store, "in the store")
+    print("There are ", people_in_store, "people in the store")
     print("")
     print("\n")
-    time.sleep(1)
+   

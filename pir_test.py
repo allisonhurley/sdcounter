@@ -11,11 +11,12 @@ GPIO.setup(pir2, GPIO.IN)
 def PIR1MOTION(pir1):  
     pir1_time = datetime.now()
     pir1_flag = 1
+    print("pir1 time ", pir1_time)
 
 def PIR2MOTION(pir2):
     pir2_time = datetime.now()
     pir2_flag = 1
-
+    print("pir2 time ", pir2_time)
     
 GPIO.add_event_detect(pir1, GPIO.RISING, callback=PIR1MOTION)
 GPIO.add_event_detect(pir2, GPIO.RISING, callback=PIR2MOTION)

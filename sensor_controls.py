@@ -50,7 +50,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate
         count = sum(map(lambda x: x>23, new_list)) #get number of temps in list greater than 23 degrees
 
-    if ((test_flag1 == 1) and (test_flag2 == 1))
+    if ((test_flag1 == 1) and (test_flag2 == 1)):
         if camera_time > PIR_rising:
             people_in_store += 1
         elif (camera_time < PIR_rising) and (people_in_store > 0):

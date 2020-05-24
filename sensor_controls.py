@@ -36,7 +36,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         #wait for person to step out of camera detection area before comparing time stamps
         while count > 0: #while the camera detects a person's temperatures
         
-            if ((count >= 2) and (count_flag == 0)): # if any number of temps > 23 FOR NOW COME BACK AND FIX?
+            if ((count > 0) and (count_flag == 0)): # if any number of temps > 23 FOR NOW COME BACK AND FIX?
                 camera_time = datetime.now()
                 print("camera time ", camera_time)
                 people_in_store += 1 #increment number of people in store
@@ -57,7 +57,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
 
     while count > 0: #while the camera detects a person's temperatures
        
-        if ((count >= 2) and (count_flag == 0)):
+        if ((count > 0) and (count_flag == 0)):
             person_detected = 1 #detected person in front of camera flag set 
             count_flag = 1 #set count flag so people not counted more than once
 

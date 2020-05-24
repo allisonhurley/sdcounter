@@ -15,7 +15,7 @@ while True:
         if GPIO.event_detected(PIR_PIN):
             motion_detected += 1 
             print("Motion detected: ",motion_detected)
-    finally:
+    except:
         GPIO.cleanup()
         
     time.sleep(1)

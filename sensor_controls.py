@@ -37,13 +37,13 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             print("camera time ", camera_time)
             count_flag = 1 #set count flag so people not counted more than once
         
-        if ((GPIO.event_detected(pir1)) and (count_flag == 1)) and (pir1_flag == 0):
+        if ((GPIO.event_detected(pir1) and count_flag == 1) and (pir1_flag == 0)):
             pir1_time = datetime.now()
             pir1_flag = 1
             print("pir1 time ", pir1_time)
             if (people_in_store > 0):
                 people_in_store -= 1
-        elif (GPIO.event_detected(pir2)) and (count_flag == 1)) and (pir2_flag == 0):
+        elif ((GPIO.event_detected(pir2) and count_flag == 1) and (pir2_flag == 0)):
             pir2_time = datetime.now()
             pir2_flag = 1
             print("pir2 time ", pir2_time)

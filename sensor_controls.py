@@ -19,6 +19,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
         
 people_in_store = 0 #initialize flags to 0
+prev_people = 0
 count = 0
 count_flag = 0 
 pir1_flag = 0
@@ -40,26 +41,28 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         if ((GPIO.event_detected(pir1) and count_flag == 1) and (pir1_flag == 0)):
             pir1_time = datetime.now()
             pir1_flag = 1
-            print("pir1 time ", pir1_time)
             if (people_in_store > 0):
                 people_in_store -= 1
         elif ((GPIO.event_detected(pir2) and count_flag == 1) and (pir2_flag == 0)):
             pir2_time = datetime.now()
-            pir2_flag = 1
-            print("pir2 time ", pir2_time)
+            pir2_flag = 1            
             people_in_store += 1
         
         new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate
         count = sum(map(lambda x: x>23, new_list)) #get number of temps in list greater than 23 degrees
-        
-        
+    
+    if people_in_store != prev_people: #if number of people in store has changed, output values
+       print("pir1 time ", pir1_time) 
+       print("pir2 time ", pir2_time) 
+       print("There are ", people_in_store, " people in the store.")
+       print("")
+       print("\n")
+       prev_people = people_in_store
     #reset flags
     count_flag = 0
     pir1_flag = 0
     pir2_flag = 0 
         
     
-    print("There are ", people_in_store, " people in the store.")
-    print("")
-    print("\n")
+
    

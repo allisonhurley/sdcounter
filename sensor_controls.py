@@ -48,10 +48,10 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             print("camera time ", camera_time)
             count_flag = 1 #set count flag so people not counted more than once
         
-        if (pir1_flag == 1) and (count_flag = 1):
+        if (pir1_flag == 1) and (count_flag == 1):
             if (people_in_store > 0):
                 people_in_store -= 1
-        elif (pir2_flag == 1) and (count_flag = 1):
+        elif (pir2_flag == 1) and (count_flag == 1):
             people_in_store += 1
         
         new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate

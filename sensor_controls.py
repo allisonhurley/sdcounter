@@ -11,19 +11,9 @@ pir1 = 17
 pir2 = 27
 GPIO.setup(pir1, GPIO.IN)
 GPIO.setup(pir2, GPIO.IN)
-
-def PIR1MOTION(pir1):  
-    pir1_time = datetime.now()
-    pir1_flag = 1
-    print("pir1 time ", pir1_time)
-
-def PIR2MOTION(pir2):
-    pir2_time = datetime.now()
-    pir2_flag = 1
-    print("pir2 time ", pir2_time)
     
-GPIO.add_event_detect(pir1, GPIO.RISING, callback=PIR1MOTION)
-GPIO.add_event_detect(pir2, GPIO.RISING, callback=PIR2MOTION)
+GPIO.add_event_detect(pir1, GPIO.RISING)
+GPIO.add_event_detect(pir2, GPIO.RISING)
 
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
@@ -31,9 +21,8 @@ amg = adafruit_amg88xx.AMG88XX(i2c)
 people_in_store = 0 #initialize flags to 0
 count = 0
 count_flag = 0 
-
 pir1_flag = 0
-pir2_flag = 0        
+pir2_flag = 0       
 
 while True:     #if PIR sensor detects movement first, the person is entering. If cam detects person first, the person is leaving 
       
@@ -48,10 +37,16 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             print("camera time ", camera_time)
             count_flag = 1 #set count flag so people not counted more than once
         
-        if (pir1_flag == 1) and (count_flag == 1):
+        if ((GPIO.event_detected(pir1)) and (count_flag == 1)) and (pir1_flag = 0):
+            pir1_time = datetime.now()
+            pir1_flag = 1
+            print("pir1 time ", pir1_time)
             if (people_in_store > 0):
                 people_in_store -= 1
-        elif (pir2_flag == 1) and (count_flag == 1):
+        elif (GPIO.event_detected(pir2)) and (count_flag == 1)) and (pir2_flag = 0):
+            pir2_time = datetime.now()
+            pir2_flag = 1
+            print("pir2 time ", pir2_time)
             people_in_store += 1
         
         new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate

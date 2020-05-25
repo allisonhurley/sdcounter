@@ -9,8 +9,7 @@ GPIO.setup(PIR_PIN1, GPIO.IN)
 GPIO.setup(PIR_PIN2, GPIO.IN)
 
 #set flags
-pir1_flag = 0
-pir2_flag = 0
+people_in_store = 10
 
 GPIO.add_event_detect(PIR_PIN1, GPIO.RISING)
 GPIO.add_event_detect(PIR_PIN2, GPIO.RISING)

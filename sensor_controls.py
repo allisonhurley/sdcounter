@@ -41,11 +41,13 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         if ((GPIO.event_detected(pir1) and count_flag == 1) and (pir1_flag == 0)):
             pir1_time = datetime.now()
             pir1_flag = 1
+            count_flag = 0
             if (people_in_store > 0):
                 people_in_store -= 1
         elif ((GPIO.event_detected(pir2) and count_flag == 1) and (pir2_flag == 0)):
             pir2_time = datetime.now()
-            pir2_flag = 1            
+            pir2_flag = 1   
+            count_flag = 0
             people_in_store += 1
         
         new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate

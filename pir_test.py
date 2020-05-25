@@ -10,6 +10,7 @@ GPIO.setup(PIR_PIN2, GPIO.IN)
 
 #set flags
 people_in_store = 10
+prev_people = 10
 
 GPIO.add_event_detect(PIR_PIN1, GPIO.RISING)
 GPIO.add_event_detect(PIR_PIN2, GPIO.RISING)
@@ -26,7 +27,8 @@ while True:
                     people_in_store -=1
 
 
-    print("There are ", people_in_store, "people in the store")
-    print("")
-    print("\n")
-
+   if people_in_store != prev_people: #if number of people in store has changed, output values
+       print("There are ", people_in_store, " people in the store.")
+       print("")
+       print("\n")
+       prev_people = people_in_store

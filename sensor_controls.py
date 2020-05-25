@@ -56,8 +56,10 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
 
     
     if people_in_store != prev_people: #if number of people in store has changed, output values
-       print("pir1 time ", pir1_time) 
-       print("pir2 time ", pir2_time) 
+       if pir1_flag == 1:
+           print("pir1 time ", pir1_time) 
+       if pir2_flag == 1:
+           print("pir2 time ", pir2_time) 
        print("There are ", people_in_store, " people in the store.")
        print("")
        print("\n")

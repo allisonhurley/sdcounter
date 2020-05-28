@@ -9,7 +9,7 @@ def get_room_data(room_id):
     return pd.read_json(url)
 
 @st.cache
-def get_rooms:
+def get_rooms():
     return pd.read_json('http://allisonhurley.com/api/rooms/')
 
 '''

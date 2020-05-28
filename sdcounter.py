@@ -1,8 +1,9 @@
+import re
 import psycopg2
 import psycopg2.extras
 
-from flask import Flask
-from flask_restplus import Api, Resource, fields
+from flask import Flask, request
+from flask_restplus import Api, Resource, fields, reqparse
 from werkzeug.contrib.fixers import ProxyFix
 
 connection = psycopg2.connect(database = "ahurley", user = "ahurley")
@@ -184,6 +185,18 @@ journal = api.model('Journal', {
     'delta': fields.Integer(readonly=True, description='Change in the number of people in the room'),
     'applied_at': fields.DateTime(readonly=True, description='Number of people in the room'),
     })
+
+@nsj.route('/')
+class Journals(Resource):
+   @nsj.marshal_with(journal)
+   @nsj.doc("Bulk journal retrieval", params = {'rooms': 'list of rooms'})
+   def get(self):
+        rooms = list(map(int,re.split('\D+', request.args.get('rooms'))))
+        with connection:
+            with connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor) as cursor:
+                cursor.execute("select * from journal where room_id = ANY (%s)", (rooms, ))
+                return cursor.fetchall()
+
 
 @nsj.route('/<int:room_id>')
 @nsj.response(404, 'Room not found')

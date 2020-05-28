@@ -27,9 +27,13 @@ if len(sys.argv) < 3:
 
 roomname = sys.argv[1]
 start = parse(sys.argv[2])
+start = start + timedelta(hours=randint(6,10))
+start = start + timedelta(minutes=randint(0,60))
 stop = parse(sys.argv[3]) if len(sys.argv) > 3 else (start + timedelta(days=1))
+stop = stop - timedelta(hours=randint(2,7))
+stop = stop - timedelta(minutes=randint(0,60))
 mode = sys.argv[4] if len(sys.argv) > 4 else "regular"
-maxcount = int(sys.argv[5] if len(sys.argv) > 5 else 25)
+maxcount = int(sys.argv[5] if len(sys.argv) > 5 else randint(15,30))
 
 if start > stop:
     tmp = start

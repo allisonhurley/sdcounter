@@ -2,6 +2,10 @@ import re
 import psycopg2
 import psycopg2.extras
 
+from datetime import datetime
+from datetime import timedelta
+from dateutil.parser import parse
+
 from flask import Flask, request
 from flask_restplus import Api, Resource, fields, reqparse
 from werkzeug.contrib.fixers import ProxyFix
@@ -189,12 +193,17 @@ journal = api.model('Journal', {
 @nsj.route('/')
 class Journals(Resource):
    @nsj.marshal_with(journal)
-   @nsj.doc("Bulk journal retrieval", params = {'rooms': 'list of rooms'})
+   @nsj.doc("Bulk journal retrieval", params = {'rooms': 'list of rooms', 'before': 'only return changes before specified datetime', 'after': 'only return changes after specified datetime'})
    def get(self):
-        rooms = list(map(int,re.split('\D+', request.args.get('rooms'))))
+        rooms = list(map(int,re.split('\D+', request.args.get('rooms')))) if 'rooms' in request.args else [] 
+        before = parse(request.args.get('before')) if 'before' in request.args else datetime.now() 
+        after = parse(request.args.get('after')) if 'after' in request.args else parse('1Jan1900') 
         with connection:
             with connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor) as cursor:
-                cursor.execute("select * from journal where room_id = ANY (%s)", (rooms, ))
+                if rooms:
+                    cursor.execute("select * from journal where room_id = ANY (%s) AND applied_at < %s AND applied_at > %s", (rooms,before, after))
+                else:
+                    cursor.execute("select * from journal where applied_at < %s AND applied_at > %s", (before, after))
                 return cursor.fetchall()
 
 

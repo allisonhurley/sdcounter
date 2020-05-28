@@ -7,7 +7,11 @@ import streamlit as st
 def get_room_data(room_id):
     url = f'http://allisonhurley.com/api/journal/{room_id}'
     return pd.read_json(url)
-	
+
+@st.cache
+def get_rooms:
+    return pd.read_json('http://allisonhurley.com/api/rooms/')
+
 '''
 # Senior Design Counter
 
@@ -16,7 +20,9 @@ This is some _markdown_.
 Go to [homepage](http://allisonhurley.com)
 '''
 
-st.text('Go to <a href="http://allisonhurley.com/">homepage</a>')
+rooms = get_rooms()
+st.write(rooms)
+
 df = get_room_data(1)
 st.write('Test me', df)
 

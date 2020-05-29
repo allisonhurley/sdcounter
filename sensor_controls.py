@@ -68,7 +68,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
            print("pir2 time ", pir2_time) 
        
        resp = requests.put(f'http://allisonhurley.com/api/rooms/{id}/count/{people_in_store}')
-       if resp.status_code != 204:
+       #if resp.status_code != 204:         COME BACK AND FIX THIS LATER - GETTING 404 ERROR
        # This means something went wrong.
            #raise RuntimeError(f'PUT /api/rooms/{id}/count/{people_in_store} {resp.status_code}')
     

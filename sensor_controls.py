@@ -57,7 +57,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             count_flag = 0
             if (people_in_store > 0):
                 people_in_store -= 1
-        elif (GPIO.event_detected(pir2):
+        elif GPIO.event_detected(pir2):
             pir2_time = datetime.now()
             pir2_flag = 1   
             count_flag = 0

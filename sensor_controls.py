@@ -39,7 +39,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         #wait for person to step out of camera detection area before checking pir flags
     while count > 0: 
 
-        if ((count > 0) and (count_flag == 0)): # if any number of temps > 23 FOR NOW COME BACK AND FIX?
+        if ((count > 2) and (count_flag == 0)): # if any number of temps > 23 NOT SURE HOW MANY TEMPS SHOULD BE > 23?
             camera_time = datetime.now()
             print("camera time ", camera_time)
             count_flag = 1 #set count flag so people not counted more than once

@@ -34,7 +34,7 @@ while True:
             print("")
         print("\n")
 
-        print("There are {people_in_store} people in the store.")
+        print("There are ", people_in_store, " people in the store.")
         print("")
         print("\n")
         

@@ -3,6 +3,7 @@ import datetime
 import numpy as np
 import pandas as pd
 import streamlit as st
+import altair as alt
 
 @st.cache
 def get_room_data(room_id,before,after):
@@ -35,6 +36,14 @@ rooms = st.multiselect(
 )
 rooms = '-'.join(map(str,rooms))
 rooms = get_room_data(rooms,stop,start)
+
+scatter_chart = st.altair_chart(
+    alt.Chart(rooms)
+        .mark_circle(size=60)
+        .encode(y='count', x='applied_at', color='delta')
+        .interactive()
+        .properties(width=750, height=750)
+)
 
 st.write(rooms)
 

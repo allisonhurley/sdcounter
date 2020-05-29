@@ -20,11 +20,10 @@ while True:
     count = sum(map(lambda x : x> 23, new_list))
 
     while count > 0:
-        if ((count >= 2) and (count_flag == 0)):
+        if ((count > 0) and (count_flag == 0)):
             people_in_store = people_in_store + 1
             count_flag = 1 #set count flag so people not counted more than once
-            prev_people = people_in_store
-            
+         
         new_list = sum(amg.pixels, [])
         count = sum(map(lambda x: x>23, new_list))
 
@@ -38,5 +37,7 @@ while True:
         print("There are {people_in_store} people in the store.")
         print("")
         print("\n")
-    
+        
+        prev_people = people_in_store
+        
     count_flag = 0 #reset flag

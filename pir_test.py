@@ -19,7 +19,7 @@ while True:
     
     if (GPIO.event_detected(PIR_PIN1)):
         if (GPIO.event_detected(PIR_PIN2)):
-        people_in_store +=1
+            people_in_store +=1
 
     if (GPIO.event_detected(PIR_PIN2)):
         if (GPIO.event_detected(PIR_PIN1)):

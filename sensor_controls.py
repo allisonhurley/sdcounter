@@ -41,7 +41,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         new_list = sum(amg.pixels, []) #convert 2D array to list so we don't have to iterate
         count = sum(map(lambda x: x>23, new_list)) #get number of temps in list greater than 23 degrees
    
-    while(pir1_flag == 0 and pir2_flag == 0):
+    while((pir1_flag == 0 and pir2_flag == 0) and count_flag == 1):
         if ((GPIO.event_detected(pir1) and count_flag == 1) and (pir1_flag == 0)):
             pir1_time = datetime.now()
             pir1_flag = 1
@@ -53,8 +53,6 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
             pir2_flag = 1   
             count_flag = 0
             people_in_store += 1
-
-
     
     if people_in_store != prev_people: #if number of people in store has changed, output values
        if pir1_flag == 1:

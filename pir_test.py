@@ -18,17 +18,11 @@ GPIO.add_event_detect(PIR_PIN2, GPIO.RISING)
 while True:
     
     if (GPIO.event_detected(PIR_PIN1)):
-        if (GPIO.event_detected(PIR_PIN2)):
-            people_in_store +=1
-
-    if (GPIO.event_detected(PIR_PIN2)):
-        if (GPIO.event_detected(PIR_PIN1)):
-            if people_in_store > 0:
-                people_in_store -=1
-
-
-    if people_in_store != prev_people: #if number of people in store has changed, output values
-        print("There are ", people_in_store, " people in the store.")
+        print("PIR 1 MOTION DETECTED")
         print("")
         print("\n")
-        prev_people = people_in_store
+
+    if (GPIO.event_detected(PIR_PIN2)):
+        print("PIR 2 MOTION DETECTED")
+        print("")
+        print("\n")

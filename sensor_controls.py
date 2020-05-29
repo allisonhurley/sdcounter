@@ -7,6 +7,14 @@ import board
 import adafruit_amg88xx
 import RPi.GPIO as GPIO
 
+#for sending count to server
+import sys
+import requests
+
+id = sys.argv[1] if len(sys.argv) > 1 else 1
+count = sys.argv[2] if len(sys.argv) > 2 else 2
+
+#set up gpio 
 pir1 = 17
 pir2 = 27
 GPIO.setup(pir1, GPIO.IN)
@@ -17,8 +25,9 @@ GPIO.add_event_detect(pir2, GPIO.RISING)
 
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
-        
-people_in_store = 0 #initialize flags to 0
+
+#initialize all flags to 0
+people_in_store = 0 
 prev_people = 0
 count = 0
 count_flag = 0 
@@ -42,13 +51,13 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
         count = sum(map(lambda x: x>23, new_list)) #get number of temps in list greater than 23 degrees
    
     while((pir1_flag == 0 and pir2_flag == 0) and count_flag == 1):
-        if ((GPIO.event_detected(pir1) and count_flag == 1) and (pir1_flag == 0)):
+        if GPIO.event_detected(pir1):
             pir1_time = datetime.now()
             pir1_flag = 1
             count_flag = 0
             if (people_in_store > 0):
                 people_in_store -= 1
-        elif ((GPIO.event_detected(pir2) and count_flag == 1) and (pir2_flag == 0)):
+        elif (GPIO.event_detected(pir2):
             pir2_time = datetime.now()
             pir2_flag = 1   
             count_flag = 0

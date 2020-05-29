@@ -1,6 +1,5 @@
 import time
 from datetime import datetime
-import numpy as np
 import busio
 import digitalio
 import board
@@ -71,7 +70,7 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
        resp = requests.put(f'http://allisonhurley.com/api/rooms/{id}/count/{people_in_store}')
        if resp.status_code != 204:
        # This means something went wrong.
-       raise RuntimeError(f'PUT /api/rooms/{id}/count/{people_in_store} {resp.status_code}')
+           raise RuntimeError(f'PUT /api/rooms/{id}/count/{people_in_store} {resp.status_code}')
     
        print("There are ", people_in_store, " people in the store.")
        print("")

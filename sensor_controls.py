@@ -9,7 +9,7 @@ import RPi.GPIO as GPIO
 #for sending count to server
 import requests
 
-id = "Door 1"
+id = 3
 
 #set up gpio 
 pir1 = 17
@@ -68,9 +68,9 @@ while True:     #if PIR sensor detects movement first, the person is entering. I
            print("pir2 time ", pir2_time) 
        
        resp = requests.put(f'http://allisonhurley.com/api/rooms/{id}/count/{people_in_store}')
-       #if resp.status_code != 204:         COME BACK AND FIX THIS LATER - GETTING 404 ERROR
+       if resp.status_code != 204:         
        # This means something went wrong.
-           #raise RuntimeError(f'PUT /api/rooms/{id}/count/{people_in_store} {resp.status_code}')
+           raise RuntimeError(f'PUT /api/rooms/{id}/count/{people_in_store} {resp.status_code}')
     
        print("There are ", people_in_store, " people in the store.")
        print("")

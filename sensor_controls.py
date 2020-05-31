@@ -9,7 +9,8 @@ import RPi.GPIO as GPIO
 #for sending count to server
 import requests
 
-id = 3
+#CHANGE THIS ID NUMBER (ERICA'S SETUP1 = 4, ERICA'S SETUP2 = 5, RYAN'S SETUP = 6)
+id = 4
 
 #set up gpio 
 pir1 = 17

@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 import requests
 
 #CHANGE THIS ID NUMBER (ERICA'S SETUP1 = 4, ERICA'S SETUP2 = 5, RYAN'S SETUP = 6)
-id = 5
+id = 6
 
 #set up gpio 
 pir1 = 17

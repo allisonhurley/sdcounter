@@ -43,7 +43,16 @@ INSERT INTO rooms (name,lon,lat) VALUES ('Little Ceasars', -83.4961, 42.2738);
 INSERT INTO rooms (name,lon,lat) VALUES ('Pet Supplies Plus', -83.5735113, 42.360868);
 INSERT INTO rooms (name,lon,lat) VALUES ('Tractor Supply Co', -83.6240911, 42.3630711);
 
+INSERT INTO rooms (name,lon,lat) VALUES ('rPi1', -83.5961, 42.3738);
+INSERT INTO rooms (name,lon,lat) VALUES ('rPi2', -83.6735113, 42.460868);
+INSERT INTO rooms (name,lon,lat) VALUES ('rPi3', -83.7240911, 42.4630711);
+
 UPDATE ROOMS SET count=3 WHERE name = 'Little Ceasars';
 UPDATE ROOMS SET count=12 WHERE name = 'Pet Supplies Plus';
 UPDATE ROOMS SET count=7 WHERE name = 'Tractor Supply Co';
+
+UPDATE ROOMS SET count=5 WHERE name = 'rPi1';
+UPDATE ROOMS SET count=6 WHERE name = 'rPi2';
+UPDATE ROOMS SET count=8 WHERE name = 'rPi3';
+
 

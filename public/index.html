@@ -25,6 +25,34 @@
 <style>
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
+
+/* Popup box container*/
+.popup {
+  position: relative;
+  display: inline-block;
+}
+
+/* Popup box text */
+.popup .popupbox {
+  visibility: hidden;
+  width: 120px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.8;
+  width: 120px;
+  top: 25%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.popup:hover .popupbox {
+  visibility: visible;
+}
 </style>
 <body>
 
@@ -40,7 +68,7 @@ body {font-family: "Lato", sans-serif}
   </div>
 </div>
 
-<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<!-- Mobile Navbar -->
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
   <a href="#mission" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">OUR MISSION</a>
   <a href="/live_data_view.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">LIVE FEED</a>
@@ -51,7 +79,7 @@ body {font-family: "Lato", sans-serif}
 <!-- Page content -->
 <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
-  <!-- Automatic Slideshow Images -->
+  <!-- Header Image -->
   <div class="mySlides w3-display-container w3-center">
     <img src="https://images.newscientist.com/wp-content/uploads/2020/02/11165812/c0481846-wuhan_novel_coronavirus_illustration-spl.jpg" style="width:50%">
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
@@ -63,40 +91,61 @@ body {font-family: "Lato", sans-serif}
   <!-- MISSION STATEMENT -->
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="mission">
     <h2 class="w3-wide">MISSION STATEMENT</h2>
-    <p class="w3-opacity"><i>Our mission statement</i></p>
-    <p class="w3-justify">Creating a proof of concept of a system capable of tracking and improving the 
-	aspect of social distancing for users. The product would be used by locations to track the current 
-	number of people in the building and show trends over time. Users would be able to view these live 
-	numbers as well as use trends to better plan their day and trips.
+    <p class="w3-opacity"><i>To provide a platform aiding social distancing</i></p>
+    <p class="w3-justify">
+	Our mission is to create a proof of concept for a system capable of tracking social distancing
+	in various locations. The product would be used by businesses to track the current number of 
+	people in a building, as well as to log occupancy trends over time. Users can navigate the website 
+	to view this data and plan their day around social distancing.
 </p>
   </div>
 
   <!-- ABOUT US -->
 <div class="w3-container w3-content w3-center w3-padding-64 w3-black" style="max-width:800px" id="about">
     <h2 class="w3-wide">ABOUT US</h2>
-    <p class="w3-opacity"><i>A brief bio of each student</i></p>
+    <p class="w3-opacity"><i>Hover over to view each student's contributions</i></p>
    <div class="w3-row w3-padding-32">
       <div class="w3-third">
         <p>Allison Hurley</p>
-        <img src="ahurley.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+		<p style="font-size:11px">CE Major, Senior 2</p>
+		<div class="popup">
+			<img src="ahurley.jpg" class="w3-round w3-margin-bottom" alt="Allison" style="width:60%">
+			<span class="popupbox">Data visualizations, SQL server</span>
+		</div>
       </div>
       <div class="w3-third">
         <p>Anthony McKenzie</p>
-        <img src="amckenzie.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+		<p style="font-size:11px">CE Major, Senior 3</p>
+		<div class="popup">
+			<img src="amckenzie.jpg" class="w3-round w3-margin-bottom" alt="Anthony" style="width:60%">
+			<span class="popupbox">Website frontend, user interface</span>
+		</div>
       </div>
       <div class="w3-third">
         <p>Erica Townsend</p>
-        <img src="etownsend.jpg" class="w3-round" alt="Random Name" style="width:60%">
+		<p style="font-size:11px">EE Major, Senior 2</p>
+		<div class="popup">
+			<img src="etownsend.jpg" class="w3-round" alt="Erica" style="width:60%">
+			<span class="popupbox">Detection sensor setup and integration</span>
+		</div>
       </div>
     </div>
 	<div class="w3-row w3-padding-32">
       <div class="w3-half">
         <p>Joshua Tanke</p>
-        <img src="jtanke.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:40%">
+		<p style="font-size:11px">EE Major, Senior 2</p>
+		<div class="popup">
+			<img src="jtanke.jpg" class="w3-round w3-margin-bottom" alt="Josh" style="width:40%">
+			<span class="popupbox">Server backend, website integration</span>
+		</div>
       </div>
       <div class="w3-half">
         <p>Ryan Reuben</p>
-        <img src="rreuben.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:40%">
+		<p style="font-size:11px">EE Major, Senior 2</p>
+		<div class="popup">
+			<img src="rreuben.jpg" class="w3-round w3-margin-bottom" alt="Ryan" style="width:40%">
+			<span class="popupbox">Sensor integration, counting algorithm</span>
+		</div>
       </div>
     </div>
   </div>
@@ -105,11 +154,11 @@ body {font-family: "Lato", sans-serif}
 </div>
 
 <script>
-// Show header image
+// Header image display
   var x = document.getElementsByClassName("mySlides");
   x[0].style.display = "block";
   
-// Used to toggle the menu on small screens when clicking on the menu button
+// Menu toggle
 function myFunction() {
   var x = document.getElementById("navDemo");
   if (x.className.indexOf("w3-show") == -1) {

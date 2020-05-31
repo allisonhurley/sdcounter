@@ -4,7 +4,9 @@ DROP TABLE IF EXISTS public.rooms;
 CREATE TABLE public.rooms (
     id SERIAL PRIMARY KEY,
     name character varying NOT NULL UNIQUE,
-    count integer NOT NULL DEFAULT 0
+    count integer NOT NULL DEFAULT 0,
+    lat float,
+    lon float
 );
 
 CREATE TABLE public.journal (
@@ -37,8 +39,11 @@ CREATE TRIGGER update_journal
     FOR EACH ROW
     EXECUTE PROCEDURE update_journal_record();
 
-INSERT INTO rooms (name) VALUES ('kitchen');
-INSERT INTO rooms (name) VALUES ('office');
-INSERT INTO rooms (name) VALUES ('garage');
+INSERT INTO rooms (name,lon,lat) VALUES ('Little Ceasars', -83.4961, 42.2738);
+INSERT INTO rooms (name,lon,lat) VALUES ('Pet Supplies Plus', -83.5735113, 42.360868);
+INSERT INTO rooms (name,lon,lat) VALUES ('Tractor Supply Co', -83.6240911, 42.3630711);
 
+UPDATE ROOMS SET count=3 WHERE name = 'Little Ceasars';
+UPDATE ROOMS SET count=12 WHERE name = 'Pet Supplies Plus';
+UPDATE ROOMS SET count=7 WHERE name = 'Tractor Supply Co';
 

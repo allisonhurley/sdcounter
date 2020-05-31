@@ -1,0 +1,13 @@
+[Unit]
+Description=streamlit
+After=network.target
+
+[Service]
+User=ahurley
+Group=www-data
+WorkingDirectory=/home/ahurley/sdcounter
+Environment="PATH=/home/ahurley/sdcounter/sdcounter/env/bin"
+ExecStart=/home/ahurley/sdcounter/sdcounter/bin/streamlit run livedata.py --server.port 8502
+
+[Install]
+WantedBy=multi-user.target

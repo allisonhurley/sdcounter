@@ -34,13 +34,14 @@ stop = st.date_input('Stop Date', datetime.datetime.now())
 rooms = st.multiselect(
         "Select rooms", room_data['id'], format_func=get_label
 )
+color_type = 'delta' if len(rooms) == 1 else 'room_id'
 rooms = '-'.join(map(str,rooms))
 rooms = get_room_data(rooms,stop,start)
 
 scatter_chart = st.altair_chart(
     alt.Chart(rooms)
         .mark_circle(size=60)
-        .encode(y='count', x='applied_at', color='delta')
+        .encode(y='count', x='applied_at', color=color_type)
         .interactive()
         .properties(width=750, height=750)
 )

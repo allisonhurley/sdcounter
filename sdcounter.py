@@ -26,6 +26,8 @@ ns = api.namespace('rooms', description='ROOMs operations')
 room = api.model('Room', {
     'id': fields.Integer(readonly=True, description='The room unique identifier'),
     'name': fields.String(required=True, description='The name of the room'),
+    'lon': fields.Float(required=False, description='The longitude of the room'),
+    'lat': fields.Float(required=False, description='The latitude of the room'),
     'count': fields.Integer(readonly=True, description='Number of people in the room')
     })
 
